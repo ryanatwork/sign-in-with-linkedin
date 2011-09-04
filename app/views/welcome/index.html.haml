@@ -1,2 +1,3 @@
-%h1 Welcome#index
-%p Find me in app/views/welcome/index.html.erb
+= form_tag "/auth/linked_in", :method => 'get' do
+  Sign in with LinkedIn
+  = submit_tag 'Submit'
