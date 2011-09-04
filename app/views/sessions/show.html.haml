@@ -1,2 +1,340 @@
-%h1 Sessions#show
-%p Find me in app/views/sessions/show.html.erb
+%h1
+  = "Hello #{@user.first_name} #{@user.last_name}"
+%h2
+  Profile
+
+%dl
+  %dt
+    id
+  %dd
+    = @user.id
+  %dt
+    first-name
+  %dd
+    = @user.first_name
+  %dt
+    last-name
+  %dd
+    = @user.last_name
+  %dt
+    headline
+  %dd
+    = @user.headline
+  %dt
+    location:(name)
+  %dd
+    = @user.location.name
+  %dt
+    location:(country:(code))
+  %dd
+    = @user.location.country.code
+  %dt
+    industry
+  %dd
+    = @user.industry
+  %dt
+    distance
+  %dd
+    = @user.distance
+  %dt
+    relation-to-viewer:(distance)
+  %dd
+    = @user.relation_to_viewer.distance
+  %dt
+    relation-to-viewer:(num-related-connections)
+  %dd
+    = @user.relation_to_viewer.num_related_connections
+  %dt
+    relation-to-viewer:(related-connections)
+  %dd
+    = @user.relation_to_viewer.related_connections
+  %dt
+    current-share
+  %dd
+    = "Author #{@user.current_share.author.first_name} #{@user.current_share.author.last_name}"
+    = "Comment: #{@user.current_share.comment}"
+    = "id: #{@user.current_share.id}"
+    = "Source:"
+    = "Application:#{@user.current_share.source.application.name}"
+    = "Service Provider:#{@user.current_share.source.service_provider.name}"
+    = "Timestamp: #{@user.current_share.timestamp}"
+    = "Visibility: #{@user.current_share.visibility.code}"
+  %dt
+    connections
+  %dd
+    connections
+  %dt
+    num-connections
+  %dd
+    = @user.num_connections
+  %dt
+    num-connections-capped
+  %dd
+    = @user.num_connections_capped
+  %dt
+    summary
+  %dd
+    = @user.summary
+  %dt
+    specialties
+  %dd
+    = @user.specialties
+  %dt
+    proposal-comments
+  %dd
+    = @user.proposal_coments
+  %dt
+    associations
+  %dd
+    = @user.associations
+  %dt
+    honors
+  %dd
+    = @user.honors
+  %dt
+    interests
+  %dd
+    = @user.interests
+  %dt
+    positions
+  %dd
+    - @user.positions.all.each do |position|
+      %dt
+        id
+      %dd
+        = position.id
+      %dt
+        title
+      %dd
+        = position.title
+      %dt
+        summary
+      %dd
+        = position.summary
+      %dt
+        start-date
+      %dd
+        - unless position.start_date.nil?
+          = "Month: #{position.start_date.month} Year: #{position.start_date.year}"
+      %dt
+        end-date
+      %dd
+        - unless position.end_date.nil?
+          = "Month: #{position.end_date.month} Year: #{position.end_date.year}"
+      %dt
+        is-current
+      %dd
+        = position.is_current
+      %dt
+        company
+      %dt
+        id
+      %dd
+        = position.company.id
+      %dt
+        name
+      %dd
+        = position.company.name
+      %dt
+        type
+      %dd
+        = position.company.type
+      %dt
+        size
+      %dd
+        = position.company.size
+      %dt
+        industry
+      %dd
+        = position.company.industry
+      %dt
+        ticker
+      %dd
+        = position.company.ticker
+  %dt
+    publications
+  %dd
+    publications
+  %dt
+    patents
+  %dt
+    = @user.patents
+  %dt
+    languages
+  %dd
+    - @user.languages.all.each do |languages|
+      = languages.language.name
+  %dt
+    skills
+  %dd
+    - @user.skills.all.each do |skills|
+      = skills.skill.name
+  %dt
+    certifications
+  %dd
+    = @user.certifications
+  %dt
+    educations
+  %dd
+    - @user.educations.all.each do |education|
+      %dt
+        id
+      %dd
+        = education.id
+      %dt
+        school-name
+      %dd
+        = education.school_name
+      %dt
+        field-of-study
+      %dd
+        = education.field_of_study
+      %dt
+        start-date
+      %dd
+        - unless education.start_date.year.nil?
+          = education.start_date.year
+      %dt
+        end-date
+      %dd
+        - unless education.end_date.year.nil?
+          = education.end_date.year
+      %dt
+        degree
+      %dd
+        = education.degree
+      %dt
+        activities
+      %dd
+        = education.activities
+      %dt
+        notes
+      %dd
+        = education.notes
+  %dt
+    three-current-positions
+  %dd
+    - @user.three_current_positions.all.each do |three_pos|
+      %dt
+        id
+      %dd
+        = three_pos.id
+      %dt
+        title
+      %dd
+        = three_pos.title
+      %dt
+        summary
+      %dd
+        = three_pos.summary
+      %dt
+        start-date
+      %dd
+        - unless three_pos.start_date.nil?
+          = "Month: #{three_pos.start_date.month} Year: #{three_pos.start_date.year}"
+      %dt
+        end-date
+      %dd
+        - unless three_pos.end_date.nil?
+          = "Month: #{three_pos.end_date.month} Year: #{three_pos.end_date.year}"
+      %dt
+        is-current
+      %dd
+        = three_pos.is_current
+      %dt
+        company
+      %dt
+        id
+      %dd
+        = three_pos.company.id
+      %dt
+        name
+      %dd
+        = three_pos.company.name
+      %dt
+        type
+      %dd
+        = three_pos.company.type
+      %dt
+        size
+      %dd
+        = three_pos.company.size
+      %dt
+        industry
+      %dd
+        = three_pos.company.industry
+      %dt
+        ticker
+      %dd
+        = three_pos.company.ticker
+  %dt
+    num-recommenders
+  %dd
+    = @user.num_recommenders
+  %dt
+    recommendations-received
+  %dd
+    = @user.recommendations_received
+  %dt
+    phone-numbers
+  %dd
+    = @user.phone_numbers
+  %dt
+    im-accounts
+  %dd
+    = @user.im_accounts
+  %dt
+    twitter-accounts
+  %dd
+    = @user.twitter_accounts
+  %dt
+    date-of-birth
+  %dd
+    = @user.date_of_birth
+  %dt
+    main-address
+  %dd
+    = @user.main_address
+  %dt
+    member-url-resources
+  %dd
+    = @user.member_url_resources
+  %dt
+    member-url:(url)
+  %dd
+    = @user.member_url
+  %dt
+    member-url:(name)
+  %dd
+    = @user.member_url
+  %dt
+    picture-url
+  %dd
+    = image_tag @user.picture_url
+  %dt
+    site-standard-profile-request:(url)
+  %dd
+    = @user.site_standard_profile_request.url
+  %dt
+    api-public-profile-request:(url)
+  %dd
+    = @user.api_public_profile_request
+  %dt
+    site-public-profile-request:(url)
+  %dd
+    = @user.site_public_profile_request
+  %dt
+    api-standard-profile-request:(url)
+  %dd
+    = @user.api_standard_profile_request
+  %dt
+    api-standard-profile-request:(headers)
+  %dd
+    = @user.api_standard_profile_request
+  %dt
+    public-profile-url
+  %dd
+    = @user.public_profile_url
+
+= form_tag signout_path, :method => 'delete' do
+  = submit_tag 'Sign out'
