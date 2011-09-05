@@ -1,2 +1,59 @@
-%h1 Connections#show
-<%= @conn %>
+%h1 Connections
+%dl
+  %dt
+    Total Connections
+  %dd
+    = @conn.total
+
+- unless @conn.all.empty?
+  - @conn.all.each do |conn|
+    %dl
+      %dt
+        id
+        %dd
+          = conn.id
+      %dt
+        first-name
+        %dd
+          = conn.first_name
+      %dt
+        last-name
+        %dd
+          = conn.last_name
+      %dt
+        headline
+        %dd
+          = conn.headline
+      %dt
+        location
+        %dd
+          location.name
+          - unless conn.location.nil?
+            = conn.location.name
+        %dd
+          location.country
+          - unless conn.location.nil?
+            = conn.location.country.code
+      %dt
+        industry
+        %dd
+          = conn.industry
+      %dt
+        api-standard-profile-request
+        %dd
+          url
+          - unless conn.api_standard_profile_request.nil?
+            = conn.api_standard_profile_request.url
+      %dt
+        site-standard-profile-request
+        %dd
+          - unless conn.site_standard_profile_request.nil?
+            = link_to conn.site_standard_profile_request.url, conn.site_standard_profile_request.url
+      %dt
+        picture-url
+        %dd
+          = conn.picture_url
+      %dt
+        %dd
+          - unless conn.picture_url.nil?
+            = image_tag conn.picture_url
