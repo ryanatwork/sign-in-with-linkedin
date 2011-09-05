@@ -9,10 +9,14 @@
 
   %body
     - if flash[:notice]
-      %p{:id => "notice"}
-        = flash[:notice]
+      %div{:class => "alert-message success"}
+        %a.close{:href => "#"} &times;
+        %p{:id => "notice"}
+          = flash[:notice]
     - if flash[:error]
-      %p{:id => "error"}
-        = flash[:error]
+      %div{:class => "alert-message error"}
+        %a.close{:href => "#"} &times;
+        %p{:id => "error"}
+          = flash[:error]
     .container
       = yield
