@@ -48,17 +48,21 @@
     relation-to-viewer:(related-connections)
   %dd
     = @user.relation_to_viewer.related_connections
+
+%dl
   %dt
     current-share
   %dd
-    = "Author #{@user.current_share.author.first_name} #{@user.current_share.author.last_name}"
-    = "Comment: #{@user.current_share.comment}"
-    = "id: #{@user.current_share.id}"
-    = "Source:"
-    = "Application:#{@user.current_share.source.application.name}"
-    = "Service Provider:#{@user.current_share.source.service_provider.name}"
-    = "Timestamp: #{@user.current_share.timestamp}"
-    = "Visibility: #{@user.current_share.visibility.code}"
+    - unless @user.current_share.nil?
+      = "Author #{@user.current_share.author.first_name} #{@user.current_share.author.last_name}"
+      = "Comment: #{@user.current_share.comment}"
+      = "id: #{@user.current_share.id}"
+      = "Source:"
+      = "Application:#{@user.current_share.source.application.name}"
+      = "Service Provider:#{@user.current_share.source.service_provider.name}"
+      = "Timestamp: #{@user.current_share.timestamp}"
+      = "Visibility: #{@user.current_share.visibility.code}"
+%dl
   %dt
     connections
   %dd
@@ -95,178 +99,207 @@
     interests
   %dd
     = @user.interests
+
+%h2 Positions
+%dl
   %dt
     positions
   %dd
-    - @user.positions.all.each do |position|
-      %dt
-        id
-      %dd
-        = position.id
-      %dt
-        title
-      %dd
-        = position.title
-      %dt
-        summary
-      %dd
-        = position.summary
-      %dt
-        start-date
-      %dd
-        - unless position.start_date.nil?
-          = "Month: #{position.start_date.month} Year: #{position.start_date.year}"
-      %dt
-        end-date
-      %dd
-        - unless position.end_date.nil?
-          = "Month: #{position.end_date.month} Year: #{position.end_date.year}"
-      %dt
-        is-current
-      %dd
-        = position.is_current
-      %dt
-        company
-      %dt
-        id
-      %dd
-        = position.company.id
-      %dt
-        name
-      %dd
-        = position.company.name
-      %dt
-        type
-      %dd
-        = position.company.type
-      %dt
-        size
-      %dd
-        = position.company.size
-      %dt
-        industry
-      %dd
-        = position.company.industry
-      %dt
-        ticker
-      %dd
+    - unless @user.positions.all.nil?
+      - @user.positions.all.each do |position|
+        %dt
+          id
+        %dd
+          = position.id
+        %dt
+          title
+        %dd
+          = position.title
+        %dt
+          summary
+        %dd
+          = position.summary
+        %dt
+          start-date
+        %dd
+          - unless position.start_date.nil?
+            = "Month: #{position.start_date.month} Year: #{position.start_date.year}"
+        %dt
+          end-date
+        %dd
+          - unless position.end_date.nil?
+            = "Month: #{position.end_date.month} Year: #{position.end_date.year}"
+        %dt
+          is-current
+        %dd
+          = position.is_current
+        %dt
+          company
+        %dt
+          id
+        %dd
+          = position.company.id
+        %dt
+          name
+        %dd
+          = position.company.name
+        %dt
+          type
+        %dd
+          = position.company.type
+        %dt
+          size
+        %dd
+          = position.company.size
+        %dt
+          industry
+        %dd
+          = position.company.industry
+        %dt
+          ticker
+        %dd
         = position.company.ticker
+
+%h2 Publications
+%dl
   %dt
     publications
   %dd
-    publications
+    = @user.publications
+
+%h2 Patents
+%dl
   %dt
     patents
   %dt
     = @user.patents
+
+%h2 Languages
+%dl
   %dt
     languages
   %dd
-    - @user.languages.all.each do |languages|
-      = languages.language.name
+    - unless @user.languages.all.nil?
+      - @user.languages.all.each do |languages|
+        = languages.language.name
+
+%h2 Skills
+%dl
   %dt
     skills
   %dd
-    - @user.skills.all.each do |skills|
-      = skills.skill.name
+    - unless @user.skills.all.nil?
+      - @user.skills.all.each do |skills|
+        = skills.skill.name
+
+%h2 Certifications
+%dl
   %dt
     certifications
   %dd
     = @user.certifications
+
+%h2 Educations
+%dl
   %dt
     educations
   %dd
-    - @user.educations.all.each do |education|
-      %dt
-        id
-      %dd
-        = education.id
-      %dt
-        school-name
-      %dd
-        = education.school_name
-      %dt
-        field-of-study
-      %dd
-        = education.field_of_study
-      %dt
-        start-date
-      %dd
-        - unless education.start_date.year.nil?
-          = education.start_date.year
-      %dt
-        end-date
-      %dd
-        - unless education.end_date.year.nil?
-          = education.end_date.year
-      %dt
-        degree
-      %dd
-        = education.degree
-      %dt
-        activities
-      %dd
-        = education.activities
-      %dt
-        notes
-      %dd
-        = education.notes
+    - unless @user.educations.all.nil?
+      - @user.educations.all.each do |education|
+        %dt
+          id
+        %dd
+          = education.id
+        %dt
+          school-name
+        %dd
+          = education.school_name
+        %dt
+          field-of-study
+        %dd
+          = education.field_of_study
+        %dt
+          start-date
+        %dd
+          - unless education.start_date.year.nil?
+            = education.start_date.year
+        %dt
+          end-date
+        %dd
+          - unless education.end_date.year.nil?
+            = education.end_date.year
+        %dt
+          degree
+        %dd
+          = education.degree
+        %dt
+          activities
+        %dd
+          = education.activities
+        %dt
+          notes
+        %dd
+          = education.notes
+
+%h2 Three Current Positions
+%dl
   %dt
     three-current-positions
   %dd
-    - @user.three_current_positions.all.each do |three_pos|
-      %dt
-        id
-      %dd
-        = three_pos.id
-      %dt
-        title
-      %dd
-        = three_pos.title
-      %dt
-        summary
-      %dd
-        = three_pos.summary
-      %dt
-        start-date
-      %dd
-        - unless three_pos.start_date.nil?
-          = "Month: #{three_pos.start_date.month} Year: #{three_pos.start_date.year}"
-      %dt
-        end-date
-      %dd
-        - unless three_pos.end_date.nil?
-          = "Month: #{three_pos.end_date.month} Year: #{three_pos.end_date.year}"
-      %dt
-        is-current
-      %dd
-        = three_pos.is_current
-      %dt
-        company
-      %dt
-        id
-      %dd
-        = three_pos.company.id
-      %dt
-        name
-      %dd
-        = three_pos.company.name
-      %dt
-        type
-      %dd
-        = three_pos.company.type
-      %dt
-        size
-      %dd
-        = three_pos.company.size
-      %dt
-        industry
-      %dd
-        = three_pos.company.industry
-      %dt
-        ticker
-      %dd
-        = three_pos.company.ticker
+    - unless @user.three_current_positions.all.nil?
+      - @user.three_current_positions.all.each do |three_pos|
+        %dt
+          id
+        %dd
+          = three_pos.id
+        %dt
+          title
+        %dd
+          = three_pos.title
+        %dt
+          summary
+        %dd
+          = three_pos.summary
+        %dt
+          start-date
+        %dd
+          - unless three_pos.start_date.nil?
+            = "Month: #{three_pos.start_date.month} Year: #{three_pos.start_date.year}"
+        %dt
+          end-date
+        %dd
+          - unless three_pos.end_date.nil?
+            = "Month: #{three_pos.end_date.month} Year: #{three_pos.end_date.year}"
+        %dt
+          is-current
+        %dd
+          = three_pos.is_current
+        %dt
+          company
+        %dt
+          id
+        %dd
+          = three_pos.company.id
+        %dt
+          name
+        %dd
+          = three_pos.company.name
+        %dt
+          type
+        %dd
+          = three_pos.company.type
+        %dt
+          size
+        %dd
+          = three_pos.company.size
+        %dt
+          industry
+        %dd
+          = three_pos.company.industry
+        %dt
+          ticker
+        %dd
+          = three_pos.company.ticker
   %dt
     num-recommenders
   %dd
@@ -275,18 +308,42 @@
     recommendations-received
   %dd
     = @user.recommendations_received
+
+%h2 Phone Numbers
+%dl
   %dt
     phone-numbers
   %dd
-    = @user.phone_numbers
+    - unless @user.phone_numbers.all.nil?
+      - @user.phone_numbers.all.each do |phone|
+        %dt
+          phone_type
+          %dd
+            = phone.phone_type
+        %dt
+          phone_number
+          %dd
+            = phone.phone_number
   %dt
     im-accounts
   %dd
-    = @user.im_accounts
+    - unless @user.im_accounts.all.nil?
+      - @user.im_accounts.all.each do |im|
+        %dt
+          im_type
+          %dd
+            = im.im_account_type
+        %dt
+          im_acocunt
+          %dd
+            =im.im_account
   %dt
     twitter-accounts
   %dd
-    = @user.twitter_accounts
+    - unless @user.twitter_accounts.all.nil?
+      - @user.twitter_accounts.all.each do |twitter|
+        %dd
+          = twitter.twitter_accounts
   %dt
     date-of-birth
   %dd
@@ -295,18 +352,24 @@
     main-address
   %dd
     = @user.main_address
+
+%h2 Member URL
+%dl
   %dt
-    member-url-resources
-  %dd
-    = @user.member_url_resources
-  %dt
-    member-url:(url)
-  %dd
-    = @user.member_url
-  %dt
-    member-url:(name)
-  %dd
-    = @user.member_url
+    member_url_resources
+  - unless @user.member_url_resources.all.nil?
+    - @user.member_url_resources.all.each do |member_url|
+      %dt
+        member-url:(url)
+        %dd
+          = member_url.url
+      %dt
+        member-url:(name)
+        %dd
+          = member_url.name
+
+%h2 Picture-url
+%dl
   %dt
     picture-url
   %dd
@@ -326,15 +389,19 @@
   %dt
     api-standard-profile-request:(url)
   %dd
-    = @user.api_standard_profile_request
+    - unless @user.api_standard_profile
+      = @user.api_standard_profile_request.url
   %dt
     api-standard-profile-request:(headers)
   %dd
-    = @user.api_standard_profile_request
+    - unless @user.api_standard_profile
+      - @user.api_standard_profile_request.headers.all.each do |headers|
+        = headers.name
   %dt
     public-profile-url
   %dd
-    = @user.public_profile_url
+    - unless @user.public_profile_url.nil?
+      = @user.public_profile_url
 
 = form_tag signout_path, :method => 'delete' do
   = submit_tag 'Sign out'
