@@ -12,7 +12,7 @@ to use the [LinkedIn Gem][ligm].
 
 ## <a name="demo">Demo</a>
 You can see a running version of the application at
-[#](#).
+[http://sign-in-with-linkedin.herokuapp.com/](http://sign-in-with-linkedin.herokuapp.com/).
 
 ## <a name="installation">Installation</a>
     git clone git://github.com/ryanatwork/sign-in-with-linkedin.git
@@ -20,7 +20,7 @@ You can see a running version of the application at
     bundle install
 
 ## <a name="usage">Usage</a>
-Sign in with Twitter requires you to [register an app with LinkedIn][apps] to
+Sign in with LinkedIn requires you to [register an app with LinkedIn][apps] to
 obtain OAuth credentials. Once you obtain credentials, substitute your consumer
 key and secret into the command below.
 
@@ -69,7 +69,7 @@ bug report should include a pull request with failing specs.
 
 ## <a name="rubies">Supported Rubies</a>
 This library aims to support and is [tested
-against](http://travis-ci.org/sferik/sign-in-with-twitter) the following Ruby
+against](http://travis-ci.org/ryanatwork/sign-in-with-linkedin) the following Ruby
 implementations:
 
 * Ruby 1.8.7
