@@ -4,6 +4,7 @@ require 'simplecov'
 SimpleCov.start
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'webmock/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -26,4 +27,11 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:linked_in] = {
+           'provider' => 'linked_in',
+           'uid' => '12345',
+           'user_info' => {'name' => "Joe Smith", 'nickname' => 'joesmith'},
+           'credentials' => {'token' => 'abc123', 'secret' => 'xyz987'}}
 end
