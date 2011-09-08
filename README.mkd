@@ -8,7 +8,7 @@ to use the [LinkedIn Gem][ligm].
 [ligm]: https://github.com/pengwynn/linkedin
 
 ## <a name="ci">Continuous Integration</a>
-[![Build Status](https://travis-ci.org/ryanatwork/sign-in-with-linkedin.png)](http://travis-ci.org/ryanatwork/sign-in-with-linkedin)
+[![Build Status](https://secure.travis-ci.org/ryanatwork/sign-in-with-linkedin.png)](http://travis-ci.org/ryanatwork/sign-in-with-linkedin)
 
 ## <a name="demo">Demo</a>
 You can see a running version of the application at
